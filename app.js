@@ -69,11 +69,11 @@ function checkLetter (button) {
     let match = null;
 
 
-    for (i = 0 ; i >= letterSelector.length ; i++){
+    for (i = 0 ; i < letterSelector.length ; i++){
 
-        if (letterSelector[i].textContent === button.textContent) {
+        if (letterSelector[i].textContent.toLocaleLowerCase() === button.textContent) {
 
-        letterSelector[i].className = 'show';
+        letterSelector[i].className = 'show letter';
 
         match = true;
     
@@ -86,10 +86,11 @@ function checkLetter (button) {
 qwerty.addEventListener ('click', (e) => {
 
     if (e.target.tagName === 'BUTTON') {
-        e.target.className === 'chosen';
+        e.target.className = 'chosen';
         
         e.target.disabled = 'true';
-        
+
+        checkLetter(e.target);
         let letterFound = checkLetter(e.target);
     }
     
