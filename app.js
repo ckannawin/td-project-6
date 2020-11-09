@@ -30,18 +30,11 @@ function getRandomQuestionsArray (arrQ) {
     return randomQuestion;
     }
 function addQuestionToDisplay(arr) {
-    
-        let appendQuestion = document.createElement('h3');
-        appendQuestion.textContent = arr;
-        document.querySelector('#banner').appendChild(appendQuestion);
-        appendQuestion.className = "questions";
-    
+    let appendQuestion = document.createElement('h3');
+    appendQuestion.textContent = arr;
+    document.querySelector('#banner').appendChild(appendQuestion);
+    appendQuestion.className = "questions";
 }
-
-
-
-//getRandomPhrasesArray(phrasesArray);
-//getRandomQuestionsArray(questionArray);
 
 function addPhraseToDisplay(arr) {
     for (i = 0; i <= arr.length; i++) {
@@ -62,7 +55,44 @@ function addPhraseToDisplay(arr) {
 
 const question = getRandomQuestionsArray (questionArray);
 const phrasesParse = getRandomPhrasesArray(phrasesArray);
-console.log(phrasesParse);
-console.log(question);
+// console.log(phrasesParse);
+// console.log(question);
 addPhraseToDisplay(phrasesParse);
 addQuestionToDisplay(question);
+
+
+
+function checkLetter (button) {
+
+    let letterSelector =  document.querySelectorAll('.letter');
+
+    let match = null;
+
+
+    for (i = 0 ; i >= letterSelector.length ; i++){
+
+        if (letterSelector[i].textContent === button.textContent) {
+
+        letterSelector[i].className = 'show';
+
+        match = true;
+    
+        }
+    }
+
+    return match;
+};
+
+qwerty.addEventListener ('click', (e) => {
+
+    if (e.target.tagName === 'BUTTON') {
+        e.target.className === 'chosen';
+        
+        e.target.disabled = 'true';
+        
+        let letterFound = checkLetter(e.target);
+    }
+    
+});
+
+
