@@ -17,17 +17,12 @@ startButton.addEventListener('click', () => {
 function getRandomPhrasesArray (arrP) {
 
     var randomPhrase = arrP[randomIndex];
-    //console.log(randomPhrase);
-
     var phraseParse = Object.values(randomPhrase)
-    //console.log(phraseParse);
     return phraseParse;
 }
 
 function getRandomQuestionsArray (arrQ) {
     var randomQuestion = arrQ[randomIndex];
-    //console.log(randomQuestion);
-
     return randomQuestion;
     }
 function addQuestionToDisplay(arr) {
@@ -48,7 +43,6 @@ function addPhraseToDisplay(arr) {
         } else {
             letterItem.className = "letter";
         }
-        //console.log(letterItem);
         phrase.appendChild(letterItem);
     }
    
@@ -60,13 +54,11 @@ addPhraseToDisplay(phrasesParse);
 addQuestionToDisplay(question);
 
 
-
 function checkLetter (button) {
 
     let letterSelector =  document.querySelectorAll('.letter');
 
     let match = null;
-
 
     for (i = 0 ; i < letterSelector.length ; i++){
 
