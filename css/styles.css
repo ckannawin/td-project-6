@@ -13,6 +13,7 @@
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
+  --font-size-small: 15px;
   --transition: all .2s ease-in-out;
 }
 
@@ -39,6 +40,15 @@ h2 {
   text-transform: uppercase;
   font-family: 'Open Sans', sans-serif;
   font-size: var(--font-size-large);
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--font-size-small);
+  color: var(--color-lose);
   margin: 0;
 }
 
@@ -80,9 +90,10 @@ button {
 .letter {
   font-size: var(--font-size-medium);
   height: 65px;
-  width: 65px;
-  padding: 20px 1px 0 1px;
+  width: 75px;
+  padding: 20px 0px 0 1px;
   margin-right: 2px;
+  margin-top: 10px;
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
