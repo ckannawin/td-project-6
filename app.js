@@ -2,7 +2,7 @@
 const startButton = document.querySelector('.btn__reset');
 const overlay = document.querySelector('#overlay');
 const qwerty = document.querySelector ('#qwerty');
-const phrase = document.querySelector ('#phrase');
+const phrase = document.querySelector ('#phrase ul');
 const tries = document.querySelectorAll('.tries img');
 const questionArray = ['How do you make a Skeleton Laugh?', 'What do skeletons hate the most about wind?', 'Why are graveyards so noisy?','Why was the skeleton so upset when the dog took his bone?','Why are skeletons so sad?'];
 const phrasesArray = ['tickle funny bone', 'it goes through them', 'all the coffin','no leg to stand on', 'they have no body'];
