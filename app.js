@@ -3,12 +3,14 @@ const startButton = document.querySelector('.btn__reset');
 const overlay = document.querySelector('#overlay');
 const qwerty = document.querySelector ('#qwerty');
 const phrase = document.querySelector ('#phrase');
-const tries = document.querySelectorAll('.tries');
+const tries = document.querySelectorAll('.tries img');
 const questionArray = ['How do you make a Skeleton Laugh?', 'What do skeletons hate the most about wind?', 'Why are graveyards so noisy?','Why was the skeleton so upset when the dog took his bone?','Why are skeletons so sad?'];
-const phrasesArray = ['tickle their funny bone', 'it goes right through them', 'all the coffin','took his leg to stand on', 'they have no body'];
-var randomIndex = Math.floor(Math.random() * questionArray.length);
+const phrasesArray = ['tickle funny bone', 'it goes through them', 'all the coffin','no leg to stand on', 'they have no body'];
 
-var missed = 0
+var randomIndex = Math.floor(Math.random() * questionArray.length);
+ 
+
+var missed = 0;
 
 startButton.addEventListener('click', () => {
     overlay.style.display = 'none';
@@ -17,14 +19,15 @@ startButton.addEventListener('click', () => {
 function getRandomPhrasesArray (arrP) {
 
     var randomPhrase = arrP[randomIndex];
-    var phraseParse = Object.values(randomPhrase)
+    var phraseParse = Object.values(randomPhrase);
     return phraseParse;
 }
 
 function getRandomQuestionsArray (arrQ) {
     var randomQuestion = arrQ[randomIndex];
     return randomQuestion;
-    }
+}
+
 function addQuestionToDisplay(arr) {
     let appendQuestion = document.createElement('h3');
     appendQuestion.textContent = arr;
@@ -36,6 +39,7 @@ function addPhraseToDisplay(arr) {
     for (i = 0; i <= arr.length; i++) {
         let letterItem = document.createElement('li');
         letterItem.textContent = arr[i];
+
         if (letterItem.textContent === " ") {
             letterItem.className = "space";
         } else if (letterItem.textContent === ""){
@@ -86,8 +90,7 @@ qwerty.addEventListener ('click', (e) => {
         
         if (letterFound === null) {
             missed += 1;
-            const ol = document.querySelector('#scoreboard-list');
-            ol.removeChild(tries[missed - 1]);
+            tries[missed - 1].src = "images/lostHeart.png";
         } 
     }
     checkWin();
@@ -104,13 +107,55 @@ function checkWin() {
         overlay.style.display = 'flex';
 
         document.querySelector('h2').textContent = 'You are a Bone-afide winner!';
+
+        randomIndex += 1;
+
+        reset();
     } else if (missed >= 5) { 
 
         overlay.className = 'lose';
         overlay.style.display = 'flex';
 
         document.querySelector('h2').textContent = 'Try again, its a skele-ton of fun!';
+
+        reset();
     }
+
+    
 };
+
+function reset() {
+    startButton.addEventListener('click', () => {
+        overlay.className = 'start';
+        missed = 0;
+
+        const banner = document.querySelector('#banner');
+        const currentQuestion = document.querySelector('.questions');
+        banner.removeChild(currentQuestion);
+        phrase.textContent = '';
+        phrase.style.display = '';
+
+        const heartReload = document.querySelectorAll('.tries img');
+        
+        for(let i =0; i< heartReload.length; i++) {
+           
+            heartReload[i].src = 'images/liveHeart.png';
+        };
+
+        let chosenDeselect = document.querySelectorAll('.chosen');
+
+        for(let i =0; i < chosenDeselect.length; i++) {
+            chosenDeselect[i].classList.remove('chosen');
+            chosenDeselect[i].disabled = false;
+        };
+        var randomIndex = Math.floor(Math.random() * questionArray.length);
+        
+        const question = getRandomQuestionsArray (questionArray);
+        const phrasesParse = getRandomPhrasesArray(phrasesArray);
+        addPhraseToDisplay(phrasesParse);
+        addQuestionToDisplay(question);
+        
+    });
+}
 
 
